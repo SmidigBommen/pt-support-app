@@ -58,4 +58,23 @@ describe("generateSupportQueueItems", () => {
     expect(items[0]?.reason.toLowerCase()).not.toContain("must");
     expect(items[0]?.reason.toLowerCase()).not.toContain("should");
   });
+
+  it("creates an optional celebration prompt for a positive consistency streak", () => {
+    const items = generateSupportQueueItems({
+      clientId: "client-4",
+      completedPlannedWorkoutsThisWeek: 3,
+      checkInsThisWeek: 4,
+    });
+
+    expect(items).toContainEqual({
+      clientId: "client-4",
+      type: "celebration_prompt",
+      priority: "low",
+      reason:
+        "Client has a positive consistency streak. Consider whether to highlight this non-scale win.",
+    });
+
+    expect(items[0]?.reason.toLowerCase()).not.toContain("must");
+    expect(items[0]?.reason.toLowerCase()).not.toContain("should");
+  });
 });

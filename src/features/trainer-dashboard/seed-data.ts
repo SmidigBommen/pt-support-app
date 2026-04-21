@@ -17,6 +17,10 @@ export type TrainerClientSeed = {
     };
     reflection: string;
   };
+  weeklySignals?: {
+    completedPlannedWorkouts: number;
+    checkIns: number;
+  };
   readinessNote: string;
   nonScaleWin: string;
 };
@@ -117,6 +121,10 @@ export const trainerClients: TrainerClientSeed[] = [
       workoutCompleted: true,
       reflection: "Felt strong and less nervous using the cable machine.",
     },
+    weeklySignals: {
+      completedPlannedWorkouts: 3,
+      checkIns: 4,
+    },
     readinessNote: "Celebrate consistency and growing comfort with equipment.",
     nonScaleWin: "Four check-ins and three planned workouts completed this week.",
   },
@@ -127,6 +135,9 @@ export const trainerDashboardSeed = trainerClients.map((client) => ({
   supportItems: generateSupportQueueItems({
     clientId: client.id,
     workoutCompleted: client.latestCheckIn.workoutCompleted,
+    completedPlannedWorkoutsThisWeek:
+      client.weeklySignals?.completedPlannedWorkouts,
+    checkInsThisWeek: client.weeklySignals?.checkIns,
     confidence: client.latestCheckIn.confidence,
     pain: client.latestCheckIn.pain,
   }),

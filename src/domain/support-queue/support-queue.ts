@@ -1,6 +1,8 @@
 export type CheckInSignal = {
   clientId: string;
   workoutCompleted?: boolean;
+  completedPlannedWorkoutsThisWeek?: number;
+  checkInsThisWeek?: number;
   confidence?: number;
   pain?: {
     present: boolean;
@@ -11,7 +13,7 @@ export type CheckInSignal = {
 
 export type SupportQueueItem = {
   clientId: string;
-  type: "trainer_review" | "trainer_follow_up";
+  type: "trainer_review" | "trainer_follow_up" | "celebration_prompt";
   priority: "high" | "medium" | "low";
   reason: string;
 };
@@ -50,6 +52,20 @@ export function generateSupportQueueItems(
       priority: "medium",
       reason:
         "Client reported low confidence. Review context and decide whether this is worth exploring in the next interaction.",
+    });
+  }
+
+  const hasPositiveConsistencyStreak =
+    (checkIn.completedPlannedWorkoutsThisWeek ?? 0) >= 3 ||
+    (checkIn.checkInsThisWeek ?? 0) >= 4;
+
+  if (hasPositiveConsistencyStreak) {
+    items.push({
+      clientId: checkIn.clientId,
+      type: "celebration_prompt",
+      priority: "low",
+      reason:
+        "Client has a positive consistency streak. Consider whether to highlight this non-scale win.",
     });
   }
 
