@@ -5,6 +5,7 @@ export type TrainerClientSeed = {
   name: string;
   status: "active" | "needs_review";
   currentGoal: string;
+  scenario: TrainerScenario;
   latestCheckIn: {
     mood: "positive" | "okay" | "rough";
     energy: number;
@@ -25,12 +26,28 @@ export type TrainerClientSeed = {
   nonScaleWin: string;
 };
 
+export type TrainerScenario = {
+  title: string;
+  productQuestion: string;
+  trainerReviewQuestion: string;
+  validationPrompt: string;
+};
+
 export const trainerClients: TrainerClientSeed[] = [
   {
     id: "client-gym-anxiety",
     name: "Maya",
     status: "active",
     currentGoal: "Build confidence with two consistent sessions per week.",
+    scenario: {
+      title: "Gym anxiety and missed solo session",
+      productQuestion:
+        "Can the trainer see anxiety and missed-session context without the app deciding the response?",
+      trainerReviewQuestion:
+        "What context would you review before deciding how to follow up with Maya?",
+      validationPrompt:
+        "Ask the trainer whether the wording feels supportive and agency-preserving.",
+    },
     latestCheckIn: {
       mood: "rough",
       energy: 4,
@@ -47,6 +64,15 @@ export const trainerClients: TrainerClientSeed[] = [
     name: "Jonas",
     status: "active",
     currentGoal: "Rebuild strength without comparing to previous performance.",
+    scenario: {
+      title: "Returning client frustrated by modifications",
+      productQuestion:
+        "Can the trainer notice frustration and frame progress without assuming the right coaching strategy?",
+      trainerReviewQuestion:
+        "What would you want to understand before discussing modifications with Jonas?",
+      validationPrompt:
+        "Ask whether the scenario helps the trainer prepare a more respectful conversation.",
+    },
     latestCheckIn: {
       mood: "okay",
       energy: 6,
@@ -63,6 +89,15 @@ export const trainerClients: TrainerClientSeed[] = [
     name: "Aisha",
     status: "active",
     currentGoal: "Improve energy and consistency while keeping weight secondary.",
+    scenario: {
+      title: "Slow weight change with functional progress",
+      productQuestion:
+        "Can the trainer quickly find non-scale progress when weight is not moving much?",
+      trainerReviewQuestion:
+        "What progress would you choose to highlight with Aisha?",
+      validationPrompt:
+        "Ask whether the app makes non-scale progress visible enough for a review conversation.",
+    },
     latestCheckIn: {
       mood: "okay",
       energy: 7,
@@ -79,6 +114,15 @@ export const trainerClients: TrainerClientSeed[] = [
     name: "Thomas",
     status: "needs_review",
     currentGoal: "Build lower-body strength with joint-friendly movements.",
+    scenario: {
+      title: "Knee discomfort before lower-body training",
+      productQuestion:
+        "Can the trainer quickly see the pain signal, recent context, and decide what to do next?",
+      trainerReviewQuestion:
+        "What would you review or adjust before training Thomas today?",
+      validationPrompt:
+        "Ask the trainer whether this context helps without making the app feel like it is deciding for them.",
+    },
     latestCheckIn: {
       mood: "rough",
       energy: 5,
@@ -99,6 +143,15 @@ export const trainerClients: TrainerClientSeed[] = [
     name: "Elin",
     status: "active",
     currentGoal: "Keep movement consistent during a stressful work period.",
+    scenario: {
+      title: "Low energy and high work stress",
+      productQuestion:
+        "Can the trainer see low-energy context and decide whether the plan needs a lighter touch?",
+      trainerReviewQuestion:
+        "What would you want to know before deciding how to support Elin?",
+      validationPrompt:
+        "Ask whether this feels like useful context or too much interpretation.",
+    },
     latestCheckIn: {
       mood: "rough",
       energy: 2,
@@ -114,6 +167,15 @@ export const trainerClients: TrainerClientSeed[] = [
     name: "Nora",
     status: "active",
     currentGoal: "Make strength training feel routine and sustainable.",
+    scenario: {
+      title: "Positive consistency streak",
+      productQuestion:
+        "Can the trainer notice and use a non-scale win when it is worth highlighting?",
+      trainerReviewQuestion:
+        "Would you highlight Nora's consistency, and if so, how would you frame it?",
+      validationPrompt:
+        "Ask whether celebration prompts feel useful or noisy.",
+    },
     latestCheckIn: {
       mood: "positive",
       energy: 8,
@@ -142,3 +204,7 @@ export const trainerDashboardSeed = trainerClients.map((client) => ({
     pain: client.latestCheckIn.pain,
   }),
 }));
+
+export function getTrainerScenario(clientId: string): TrainerScenario | undefined {
+  return trainerClients.find((client) => client.id === clientId)?.scenario;
+}

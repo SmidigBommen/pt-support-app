@@ -14,6 +14,8 @@ export default function TrainerDashboardPage() {
         ...item,
         clientName: client.name,
         goal: client.currentGoal,
+        scenarioTitle: client.scenario.title,
+        trainerReviewQuestion: client.scenario.trainerReviewQuestion,
         reflection: client.latestCheckIn.reflection,
       })),
     ),
@@ -69,6 +71,17 @@ export default function TrainerDashboardPage() {
                 <p className="mt-3 text-sm leading-6 text-slate-700">
                   {item.reason}
                 </p>
+                <div className="mt-4 rounded-md border border-teal-100 bg-teal-50 p-3">
+                  <p className="text-xs font-medium uppercase text-teal-800">
+                    Scenario
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-teal-950">
+                    {item.scenarioTitle}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-teal-900">
+                    {item.trainerReviewQuestion}
+                  </p>
+                </div>
                 <p className="mt-3 border-l-2 border-slate-200 pl-3 text-sm leading-6 text-slate-500">
                   {item.reflection}
                 </p>
@@ -123,6 +136,14 @@ export default function TrainerDashboardPage() {
                 <p className="mt-4 text-sm leading-6 text-slate-600">
                   {client.nonScaleWin}
                 </p>
+                <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-3">
+                  <p className="text-xs font-medium uppercase text-slate-500">
+                    Validation prompt
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-700">
+                    {client.scenario.validationPrompt}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
