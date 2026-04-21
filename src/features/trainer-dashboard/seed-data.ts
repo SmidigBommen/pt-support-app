@@ -1,4 +1,5 @@
 import { generateSupportQueueItems } from "@/domain/support-queue/support-queue";
+import { buildSessionPrepBrief } from "@/domain/session-prep/session-prep";
 
 export type TrainerClientSeed = {
   id: string;
@@ -202,6 +203,18 @@ export const trainerDashboardSeed = trainerClients.map((client) => ({
     checkInsThisWeek: client.weeklySignals?.checkIns,
     confidence: client.latestCheckIn.confidence,
     pain: client.latestCheckIn.pain,
+  }),
+})).map(({ client, supportItems }) => ({
+  client,
+  supportItems,
+  sessionPrep: buildSessionPrepBrief({
+    clientName: client.name,
+    currentGoal: client.currentGoal,
+    latestReflection: client.latestCheckIn.reflection,
+    readinessNote: client.readinessNote,
+    nonScaleWin: client.nonScaleWin,
+    trainerReviewQuestion: client.scenario.trainerReviewQuestion,
+    supportReasons: supportItems.map((item) => item.reason),
   }),
 }));
 

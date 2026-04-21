@@ -90,11 +90,58 @@ export default function TrainerDashboardPage() {
           </div>
         </div>
 
-        <div>
-          <h2 className="text-lg font-semibold text-slate-950">
-            Client snapshots
-          </h2>
-          <div className="mt-4 grid gap-3">
+        <div className="grid gap-6">
+          <section>
+            <h2 className="text-lg font-semibold text-slate-950">
+              Session prep
+            </h2>
+            <div className="mt-4 grid gap-3">
+              {trainerDashboardSeed
+                .filter(({ supportItems }) => supportItems.length > 0)
+                .slice(0, 3)
+                .map(({ client, sessionPrep }) => (
+                  <article
+                    key={`${client.id}-session-prep`}
+                    className="rounded-md border border-slate-200 bg-white p-4"
+                  >
+                    <h3 className="font-medium text-slate-950">
+                      {sessionPrep.title}
+                    </h3>
+                    <ul className="mt-3 grid gap-2">
+                      {sessionPrep.context.map((line) => (
+                        <li
+                          key={line}
+                          className="text-sm leading-6 text-slate-600"
+                        >
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-4 rounded-md border border-teal-100 bg-teal-50 p-3">
+                      <p className="text-xs font-medium uppercase text-teal-800">
+                        Review prompts
+                      </p>
+                      <ul className="mt-2 grid gap-2">
+                        {sessionPrep.reviewPrompts.map((prompt) => (
+                          <li
+                            key={prompt}
+                            className="text-sm leading-6 text-teal-900"
+                          >
+                            {prompt}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-slate-950">
+              Client snapshots
+            </h2>
+            <div className="mt-4 grid gap-3">
             {trainerDashboardSeed.map(({ client, supportItems }) => (
               <article
                 key={client.id}
@@ -146,7 +193,8 @@ export default function TrainerDashboardPage() {
                 </div>
               </article>
             ))}
-          </div>
+            </div>
+          </section>
         </div>
       </section>
     </main>
