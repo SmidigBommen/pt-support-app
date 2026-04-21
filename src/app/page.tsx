@@ -27,6 +27,13 @@ export default function Home() {
           </div>
         ))}
       </section>
+
+      <a
+        href="/trainer"
+        className="w-fit rounded-md bg-slate-950 px-4 py-2 text-sm font-medium text-white"
+      >
+        Open trainer dashboard
+      </a>
     </main>
   );
 }

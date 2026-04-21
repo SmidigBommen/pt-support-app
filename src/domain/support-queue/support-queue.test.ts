@@ -23,4 +23,19 @@ describe("generateSupportQueueItems", () => {
     expect(items[0]?.reason.toLowerCase()).not.toContain("diagnose");
     expect(items[0]?.reason.toLowerCase()).not.toContain("because of");
   });
+
+  it("creates a medium-priority follow-up item when a client misses a planned workout", () => {
+    const items = generateSupportQueueItems({
+      clientId: "client-2",
+      workoutCompleted: false,
+    });
+
+    expect(items).toContainEqual({
+      clientId: "client-2",
+      type: "trainer_follow_up",
+      priority: "medium",
+      reason:
+        "Client missed a planned workout. Check in supportively and help identify any barrier.",
+    });
+  });
 });
