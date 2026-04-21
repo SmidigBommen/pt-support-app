@@ -1,3 +1,4 @@
+import { orderSupportQueueItems } from "@/domain/support-queue/support-queue";
 import { trainerDashboardSeed } from "@/features/trainer-dashboard/seed-data";
 
 const priorityStyles = {
@@ -7,13 +8,15 @@ const priorityStyles = {
 };
 
 export default function TrainerDashboardPage() {
-  const supportItems = trainerDashboardSeed.flatMap(({ client, supportItems }) =>
-    supportItems.map((item) => ({
-      ...item,
-      clientName: client.name,
-      goal: client.currentGoal,
-      reflection: client.latestCheckIn.reflection,
-    })),
+  const supportItems = orderSupportQueueItems(
+    trainerDashboardSeed.flatMap(({ client, supportItems }) =>
+      supportItems.map((item) => ({
+        ...item,
+        clientName: client.name,
+        goal: client.currentGoal,
+        reflection: client.latestCheckIn.reflection,
+      })),
+    ),
   );
 
   return (

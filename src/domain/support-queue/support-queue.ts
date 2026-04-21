@@ -18,6 +18,12 @@ export type SupportQueueItem = {
   reason: string;
 };
 
+const priorityRank: Record<SupportQueueItem["priority"], number> = {
+  high: 0,
+  medium: 1,
+  low: 2,
+};
+
 export function generateSupportQueueItems(
   checkIn: CheckInSignal,
 ): SupportQueueItem[] {
@@ -70,4 +76,12 @@ export function generateSupportQueueItems(
   }
 
   return items;
+}
+
+export function orderSupportQueueItems<T extends SupportQueueItem>(
+  items: T[],
+): T[] {
+  return [...items].sort(
+    (left, right) => priorityRank[left.priority] - priorityRank[right.priority],
+  );
 }
