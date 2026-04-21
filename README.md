@@ -33,6 +33,7 @@ We are not trying to build a complete trainer platform yet. We are organizing ar
 - [mvp-plan.md](mvp-plan.md): testable MVP slices, validation loops, test scripts, and seed data requirements.
 - [architecture.md](architecture.md): local Postgres, thin API, testing strategy, and initial application architecture.
 - [deployment.md](deployment.md): test server notes and first deployment checklist.
+- [validation-notes.md](validation-notes.md): trainer walkthrough script and validation note template.
 - [AGENTS.md](AGENTS.md): collaboration, product, engineering, safety, and validation rules for work in this repository.
 - [domain/personal-trainer-overweight-clients](domain/personal-trainer-overweight-clients): domain research on trainers working with overweight clients.
 
