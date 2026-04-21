@@ -31,6 +31,7 @@ We are not trying to build a complete trainer platform yet. We are organizing ar
 - [product-guide.md](product-guide.md): product vision, positioning, users, product principles, MVP scope, risks, and success metrics.
 - [product-backlog.md](product-backlog.md): delivery plan, backlog, developer notes, domain entities, support queue rules, and testing focus.
 - [mvp-plan.md](mvp-plan.md): testable MVP slices, validation loops, test scripts, and seed data requirements.
+- [architecture.md](architecture.md): local Postgres, thin API, testing strategy, and initial application architecture.
 - [AGENTS.md](AGENTS.md): collaboration, product, engineering, safety, and validation rules for work in this repository.
 - [domain/personal-trainer-overweight-clients](domain/personal-trainer-overweight-clients): domain research on trainers working with overweight clients.
 
@@ -59,10 +60,29 @@ The first build should start with a clickable trainer-facing skeleton using real
 - Use well-known, respected standards, libraries, and conventions.
 - Ask when uncertainty could create rework, safety risk, or product drift.
 - Prefer seed data before backend complexity.
+- Keep API routes thin and domain logic tested outside the UI.
 - Validate with trainers and clients early.
 - Keep weight optional and visually secondary.
 - Avoid shame-based language and unsafe certainty.
 - Keep nutrition and medical topics within appropriate scope.
+
+## Local Postgres
+
+This project uses local Postgres for development.
+
+Start Postgres with Podman:
+
+```sh
+podman compose up -d postgres
+```
+
+Stop Postgres:
+
+```sh
+podman compose down
+```
+
+Copy `.env.example` to `.env` when the application scaffold is added.
 
 ## Product Safety
 
