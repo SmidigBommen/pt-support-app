@@ -1,0 +1,50 @@
+{
+  "name": "pt-support-app",
+  "version": "1.0.0",
+  "description": "An early product exploration for a personal trainer and client app.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmidigBommen/pt-support-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/SmidigBommen/pt-support-app/issues"
+  },
+  "homepage": "https://github.com/SmidigBommen/pt-support-app#readme",
+  "dependencies": {
+    "@prisma/client": "^7.7.0",
+    "next": "^16.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.4",
+    "prisma": "^7.7.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  }
+}
