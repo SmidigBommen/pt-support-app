@@ -1,6 +1,7 @@
 export type CheckInSignal = {
   clientId: string;
   workoutCompleted?: boolean;
+  confidence?: number;
   pain?: {
     present: boolean;
     location?: string;
@@ -39,6 +40,16 @@ export function generateSupportQueueItems(
       priority: "medium",
       reason:
         "Client missed a planned workout. Review context and decide whether a supportive follow-up is useful.",
+    });
+  }
+
+  if (checkIn.confidence !== undefined && checkIn.confidence <= 3) {
+    items.push({
+      clientId: checkIn.clientId,
+      type: "trainer_review",
+      priority: "medium",
+      reason:
+        "Client reported low confidence. Review context and decide whether this is worth exploring in the next interaction.",
     });
   }
 

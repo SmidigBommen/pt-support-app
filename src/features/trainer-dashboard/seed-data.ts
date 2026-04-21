@@ -127,6 +127,7 @@ export const trainerDashboardSeed = trainerClients.map((client) => ({
   supportItems: generateSupportQueueItems({
     clientId: client.id,
     workoutCompleted: client.latestCheckIn.workoutCompleted,
+    confidence: client.latestCheckIn.confidence,
     pain: client.latestCheckIn.pain,
   }),
 }));

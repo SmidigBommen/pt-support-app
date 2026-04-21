@@ -40,4 +40,22 @@ describe("generateSupportQueueItems", () => {
         "Client missed a planned workout. Review context and decide whether a supportive follow-up is useful.",
     });
   });
+
+  it("creates a low-confidence review item without prescribing the trainer response", () => {
+    const items = generateSupportQueueItems({
+      clientId: "client-3",
+      confidence: 2,
+    });
+
+    expect(items).toContainEqual({
+      clientId: "client-3",
+      type: "trainer_review",
+      priority: "medium",
+      reason:
+        "Client reported low confidence. Review context and decide whether this is worth exploring in the next interaction.",
+    });
+
+    expect(items[0]?.reason.toLowerCase()).not.toContain("must");
+    expect(items[0]?.reason.toLowerCase()).not.toContain("should");
+  });
 });
