@@ -238,3 +238,4 @@ podman compose down
 - Do not add auth complexity until the prototype needs trainer/client separation.
 - Do not add external services until a validation loop proves the need.
 - Keep every production rule covered by a test.
+- Keep trainer judgment explicit; domain rules should generate review prompts, not automatic coaching decisions.

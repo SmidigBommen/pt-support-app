@@ -70,6 +70,8 @@ Core needs:
 - Safety and dignity are product requirements: avoid experiences that create embarrassment, shame, or unsafe escalation.
 - Scope-aware coaching: help trainers recognize when to refer to a physician, registered dietitian, physiotherapist, or mental health professional.
 - Modifications are valid paths: exercise alternatives should be framed as appropriate progressions, not failures.
+- Trainer judgment leads: the app should surface signals, context, and possible concerns while leaving coaching decisions to educated trainers.
+- Suggestions may be useful, but the trainer must keep agency over coaching decisions.
 
 ## Core Product Shape
 
@@ -100,6 +102,8 @@ The trainer sees trends and risk signals, for example:
 - A client mentioned pain or injury risk.
 - A client is struggling emotionally with progress.
 - A client may need a referral or medical clearance before progressing.
+
+These signals should be presented as prompts for trainer review, not as automatic conclusions about what the trainer must do. Suggested next steps are acceptable only when they remain optional and clearly trainer-controlled.
 
 ### 2. Relationship Timeline
 
@@ -192,6 +196,8 @@ Important product implications:
 - Pain, dizziness, chest discomfort, unusual breathlessness, or concerning symptoms should trigger conservative guidance and referral prompts.
 - Nutrition features should stay within general habit guidance unless a registered dietitian is involved.
 - The app should avoid shame-based language, punitive calorie framing, and public exposure of sensitive metrics.
+- The app should avoid assuming exercise changes, referrals, or motivation strategies. It should make relevant context easy for the trainer to evaluate.
+- The app should not make the trainer feel managed by software. It should support their judgment and reduce context-gathering work.
 
 ## MVP Scope
 

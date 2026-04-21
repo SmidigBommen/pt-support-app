@@ -17,11 +17,13 @@ describe("generateSupportQueueItems", () => {
       type: "trainer_review",
       priority: "high",
       reason:
-        "Client reported knee pain. Review before training and consider referral if pain persists or symptoms are concerning.",
+        "Client reported knee pain. Review before training and decide whether any adjustment or referral consideration is appropriate.",
     });
 
     expect(items[0]?.reason.toLowerCase()).not.toContain("diagnose");
     expect(items[0]?.reason.toLowerCase()).not.toContain("because of");
+    expect(items[0]?.reason.toLowerCase()).not.toContain("must");
+    expect(items[0]?.reason.toLowerCase()).not.toContain("should");
   });
 
   it("creates a medium-priority follow-up item when a client misses a planned workout", () => {
@@ -35,7 +37,7 @@ describe("generateSupportQueueItems", () => {
       type: "trainer_follow_up",
       priority: "medium",
       reason:
-        "Client missed a planned workout. Check in supportively and help identify any barrier.",
+        "Client missed a planned workout. Review context and decide whether a supportive follow-up is useful.",
     });
   });
 });

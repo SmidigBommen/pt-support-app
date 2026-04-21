@@ -28,7 +28,7 @@ export function generateSupportQueueItems(
       clientId: checkIn.clientId,
       type: "trainer_review",
       priority: "high",
-      reason: `Client reported ${painDescription}. Review before training and consider referral if pain persists or symptoms are concerning.`,
+      reason: `Client reported ${painDescription}. Review before training and decide whether any adjustment or referral consideration is appropriate.`,
     });
   }
 
@@ -38,7 +38,7 @@ export function generateSupportQueueItems(
       type: "trainer_follow_up",
       priority: "medium",
       reason:
-        "Client missed a planned workout. Check in supportively and help identify any barrier.",
+        "Client missed a planned workout. Review context and decide whether a supportive follow-up is useful.",
     });
   }
 

@@ -87,6 +87,8 @@ Deliverables:
 - Validate whether trainers want population-specific safety prompts or find them too intrusive.
 - Interview clients about what makes check-ins feel supportive versus judgmental.
 - Test language for weight, progress, limitations, and modifications.
+- Validate where trainers want decision support versus where product prompts feel presumptive.
+- Validate whether suggested next steps feel helpful while preserving trainer agency.
 
 ### Information Architecture
 
@@ -176,6 +178,8 @@ Deliverables:
 - Create encouragement items for non-scale victories.
 - Create referral consideration items when concerns appear out of trainer scope.
 - Create expectation-management items when progress frustration appears.
+- Phrase support items as review prompts and possible considerations, not prescribed actions.
+- Keep suggestions optional and editable.
 
 ### Session Prep
 
@@ -256,6 +260,8 @@ Deliverables:
 - Avoid diagnostic language in product copy.
 - Avoid prescriptive nutrition plans in the MVP.
 - Make referral records visible in the client timeline.
+- Keep trainer-controlled decisions explicit in the UI.
+- Do not auto-apply coaching decisions from generated support items.
 
 ## Developer Notes
 
@@ -431,3 +437,5 @@ Build order:
 - Red-flag check-in answers generate visible trainer review items.
 - Non-scale progress appears before weight-focused metrics.
 - Referral items avoid diagnostic language.
+- Support queue copy does not imply the app knows the correct coaching decision.
+- Suggested next steps preserve trainer agency.

@@ -448,3 +448,5 @@ Each sample client should include:
 - Keep nutrition general and habit-based.
 - Do not generate medical or diagnostic advice.
 - Treat sensitive data as consented, private, and easy to hide.
+- Let trainers decide; the product should present context, not assume the right coaching action.
+- Suggestions are allowed only when they are optional, transparent, and easy for the trainer to ignore or adapt.

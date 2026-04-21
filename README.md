@@ -63,6 +63,8 @@ The first build should start with a clickable trainer-facing skeleton using real
 - Prefer seed data before backend complexity.
 - Keep API routes thin and domain logic tested outside the UI.
 - Validate with trainers and clients early.
+- Respect trainer expertise by presenting context and review prompts rather than automatic coaching decisions.
+- Keep suggestions optional so trainer agency is never reduced.
 - Keep weight optional and visually secondary.
 - Avoid shame-based language and unsafe certainty.
 - Keep nutrition and medical topics within appropriate scope.
