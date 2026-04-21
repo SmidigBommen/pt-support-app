@@ -93,6 +93,69 @@ export default function TrainerDashboardPage() {
         <div className="grid gap-6">
           <section>
             <h2 className="text-lg font-semibold text-slate-950">
+              Profile context
+            </h2>
+            <div className="mt-4 grid gap-3">
+              {trainerDashboardSeed
+                .filter(({ supportItems }) => supportItems.length > 0)
+                .slice(0, 2)
+                .map(({ client, profileSummary }) => (
+                  <article
+                    key={`${client.id}-profile-context`}
+                    className="rounded-md border border-slate-200 bg-white p-4"
+                  >
+                    <h3 className="font-medium text-slate-950">
+                      {profileSummary.title}
+                    </h3>
+                    <dl className="mt-3 grid gap-3 text-sm">
+                      <div>
+                        <dt className="font-medium text-slate-700">Goal</dt>
+                        <dd className="mt-1 leading-6 text-slate-600">
+                          {profileSummary.currentGoal}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="font-medium text-slate-700">
+                          Readiness
+                        </dt>
+                        <dd className="mt-1 leading-6 text-slate-600">
+                          {profileSummary.readinessNote}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="font-medium text-slate-700">
+                          Trainer note
+                        </dt>
+                        <dd className="mt-1 leading-6 text-slate-600">
+                          {profileSummary.trainerNote}
+                        </dd>
+                      </div>
+                    </dl>
+                    <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-3">
+                      <p className="text-xs font-medium uppercase text-slate-500">
+                        Timeline
+                      </p>
+                      <ul className="mt-2 grid gap-2">
+                        {profileSummary.timelineEvents.map((event) => (
+                          <li
+                            key={event}
+                            className="text-sm leading-6 text-slate-700"
+                          >
+                            {event}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p className="mt-4 text-sm leading-6 text-teal-800">
+                      {profileSummary.reviewQuestion}
+                    </p>
+                  </article>
+                ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-slate-950">
               Session prep
             </h2>
             <div className="mt-4 grid gap-3">

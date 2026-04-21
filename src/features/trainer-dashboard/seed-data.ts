@@ -1,5 +1,6 @@
 import { generateSupportQueueItems } from "@/domain/support-queue/support-queue";
 import { buildSessionPrepBrief } from "@/domain/session-prep/session-prep";
+import { buildClientProfileSummary } from "@/domain/client-profile/client-profile";
 
 export type TrainerClientSeed = {
   id: string;
@@ -25,6 +26,8 @@ export type TrainerClientSeed = {
   };
   readinessNote: string;
   nonScaleWin: string;
+  trainerNote: string;
+  timelineEvents: string[];
 };
 
 export type TrainerScenario = {
@@ -59,6 +62,12 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Prefers quieter training areas and clear session previews.",
     nonScaleWin: "Completed her first full warm-up without stopping last week.",
+    trainerNote:
+      "Maya opens up more when the session plan is previewed before the gym floor.",
+    timelineEvents: [
+      "Skipped planned solo walk after feeling anxious about the gym floor.",
+      "Completed first full warm-up without stopping last week.",
+    ],
   },
   {
     id: "client-returning",
@@ -84,6 +93,12 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Responds well when modifications are framed as progressions.",
     nonScaleWin: "Added 5 minutes to low-impact cardio duration.",
+    trainerNote:
+      "Jonas values understanding how modified movements connect to rebuilding strength.",
+    timelineEvents: [
+      "Felt frustrated by modified push-ups after last session.",
+      "Added 5 minutes to low-impact cardio duration.",
+    ],
   },
   {
     id: "client-slow-weight-change",
@@ -109,6 +124,12 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Wants progress conversations to include functional wins.",
     nonScaleWin: "Reported climbing office stairs with less breathlessness.",
+    trainerNote:
+      "Aisha can get discouraged by scale fluctuations; functional wins land well.",
+    timelineEvents: [
+      "Scale has not moved much this week.",
+      "Reported climbing office stairs with less breathlessness.",
+    ],
   },
   {
     id: "client-knee-discomfort",
@@ -138,6 +159,12 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Avoid high-impact work and review step height before session.",
     nonScaleWin: "Maintained two weekly sessions for three weeks.",
+    trainerNote:
+      "Thomas prefers clear options and wants to understand why movements are changed.",
+    timelineEvents: [
+      "Reported knee discomfort after step-ups.",
+      "Maintained two weekly sessions for three weeks.",
+    ],
   },
   {
     id: "client-low-energy",
@@ -162,6 +189,12 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Needs lower-friction options when stress is high.",
     nonScaleWin: "Still completed two short walks this week.",
+    trainerNote:
+      "Elin responds better to small choices than broad encouragement during high-stress weeks.",
+    timelineEvents: [
+      "Slept poorly and reported high work stress.",
+      "Still completed two short walks this week.",
+    ],
   },
   {
     id: "client-positive-streak",
@@ -190,6 +223,13 @@ export const trainerClients: TrainerClientSeed[] = [
     },
     readinessNote: "Celebrate consistency and growing comfort with equipment.",
     nonScaleWin: "Four check-ins and three planned workouts completed this week.",
+    trainerNote:
+      "Nora is building confidence with equipment and notices specific praise.",
+    timelineEvents: [
+      "Completed four check-ins this week.",
+      "Completed three planned workouts this week.",
+      "Reported feeling less nervous using the cable machine.",
+    ],
   },
 ];
 
@@ -215,6 +255,14 @@ export const trainerDashboardSeed = trainerClients.map((client) => ({
     nonScaleWin: client.nonScaleWin,
     trainerReviewQuestion: client.scenario.trainerReviewQuestion,
     supportReasons: supportItems.map((item) => item.reason),
+  }),
+  profileSummary: buildClientProfileSummary({
+    clientName: client.name,
+    currentGoal: client.currentGoal,
+    readinessNote: client.readinessNote,
+    trainerNote: client.trainerNote,
+    timelineEvents: client.timelineEvents,
+    trainerReviewQuestion: client.scenario.trainerReviewQuestion,
   }),
 }));
 
